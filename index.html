@@ -129,7 +129,7 @@
     /* Additional services - two column list */
     .extras{
       display:grid;
-      grid-template-columns:repeat(2, 1fr);
+      grid-template-columns:repeat(1, 1fr);
       gap:10px 18px;
       margin-top:14px;
       font-size:14px;
@@ -155,13 +155,19 @@
       <img src="https://raw.githubusercontent.com/Vasily7x/Orca-Media-Design/refs/heads/main/logo.png" alt="Orca Logo" class="logo">
       <h1>Orca Media &amp; Design</h1>
       <p>YOUR VISION, OUR OCEAN OF CREATIVITY</p>
-      <p>Don’t Go Far!</p>
+      <p>!Don’t Go Far</p>
     </header>
 
     <main>
       <section>
         <h2>خدماتنا</h2>
         <div class="grid">
+
+                    <div class="icon-box">
+            <i class="fas fa-bullhorn" aria-hidden="true"></i>
+            <h3>إدارة سوشيال ميديا</h3>
+            <p>خطط محتوى، إدارة صفحات، وإعلانات ممولة لبناء مجتمع نشط.</p>
+          </div>
           <div class="icon-box">
             <i class="fas fa-pen-nib" aria-hidden="true"></i>
             <h3>تصميم جرافيك</h3>
@@ -174,11 +180,7 @@
             <p>تصوير منتجات، تصوير جلسات إعلانات، ومونتاج فيديوهات قصيرة وطويلة.</p>
           </div>
 
-          <div class="icon-box">
-            <i class="fas fa-bullhorn" aria-hidden="true"></i>
-            <h3>إدارة سوشيال ميديا</h3>
-            <p>خطط محتوى، إدارة صفحات، وإعلانات ممولة لبناء مجتمع نشط.</p>
-          </div>
+
         </div>
       </section>
 
@@ -186,12 +188,12 @@
         <h2>الباقات</h2>
 
         <div class="pricing-toggle" aria-hidden="false">
-          <span>شهري</span>
+          <span>سنوي (خصم 10%)</span>
           <label class="switch" title="تبديل شهري / سنوي">
             <input type="checkbox" id="togglePricing" aria-label="Toggle pricing">
             <span class="slider"></span>
           </label>
-          <span>سنوي (خصم 10%)</span>
+           <span>شهري</span>
         </div>
 
         <div class="packages-grid">
@@ -329,3 +331,4 @@
   </script>
 </body>
 </html>
+
