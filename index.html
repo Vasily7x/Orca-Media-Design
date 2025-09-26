@@ -6,10 +6,6 @@
   <title>Orca Media & Design</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    :root{
-      --brand:#0077cc;
-    }
-
     body{
       margin:0;
       background:#d9d9d9;
@@ -19,7 +15,6 @@
       padding:10px;
       color:#222;
     }
-
     .a4-page{
       width:100%;
       max-width:794px;
@@ -30,69 +25,36 @@
       display:flex;
       flex-direction:column;
     }
-
     header{
       position:relative;
       padding:60px 20px 40px;
-      color:#fff;
       text-align:center;
-      background:url("https://raw.githubusercontent.com/Vasily7x/Orca-Media-Design/refs/heads/main/Picture1.png") no-repeat center/cover;
+      background:url("https://raw.githubusercontent.com/Vasily7x/Orca-Media-Design/refs/heads/main/background.png") no-repeat center/cover;
+      color:#fff;
     }
     header::after{
       content:"";
       position:absolute;
       inset:0;
-      background:rgba(0,0,0,0.25);
+      background:rgba(0,0,0,0.35);
     }
     header .logo{
       position:relative;
       z-index:1;
-      max-width:140px;
-      margin-bottom:12px;
+      max-width:160px;
+      margin-bottom:16px;
     }
     header h1, header p{position:relative;z-index:1;}
-    header h1{margin:0;font-size:26px;}
-    header p{margin:4px 0;font-size:14px;}
-
+    header h1{margin:0;font-size:30px;}
+    header p{margin:6px 0;font-size:15px;}
     main{padding:20px;}
-
-    h2{color:var(--brand);text-align:center;margin:10px 0 16px;}
-
-    /* الخدمات */
-    .grid{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:center;
-      gap:12px;
-      margin-bottom:18px;
-    }
-    .icon-box{
-      flex:1 1 200px;
-      max-width:240px;
-      background:#fff;
-      border-radius:10px;
-      padding:15px;
-      text-align:center;
-      box-shadow:0 4px 12px rgba(0,0,0,0.06);
-      border:1px solid #eee;
-    }
-    .icon-box i{font-size:28px;color:var(--brand);margin-bottom:8px;display:block;}
-    .icon-box h3{margin:6px 0;font-size:16px;}
-    .icon-box p{font-size:13px;color:#444;}
-
-    /* الباقات */
-    .pricing-toggle{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:14px;font-size:14px;}
-    .switch{position:relative;display:inline-block;width:50px;height:24px;}
-    .switch input{opacity:0;width:0;height:0;}
-    .slider{position:absolute;cursor:pointer;inset:0;background:#ccc;transition:.3s;border-radius:24px;}
-    .slider:before{content:"";position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#fff;transition:.3s;border-radius:50%;}
-    input:checked + .slider{background:var(--brand);}
-    input:checked + .slider:before{transform:translateX(26px);}
-
+    h2{color:#0077cc;text-align:center;margin:10px 0 16px;}
+    /* grid for packages */
     .packages-grid{
       display:flex;
       flex-wrap:wrap;
       gap:14px;
+      margin-bottom:20px;
     }
     .package{
       flex:1 1 calc(50% - 10px);
@@ -106,24 +68,20 @@
     .package h3{margin:0 0 8px;font-size:16px;display:flex;align-items:center;gap:6px;}
     .package ul{list-style:none;padding:0;margin:0 0 10px;font-size:13px;}
     .package ul li{margin:6px 0;display:flex;align-items:center;gap:6px;}
-    .package ul li i{color:var(--brand);}
+    .package ul li i{color:#0077cc;}
     .price{font-weight:bold;font-size:15px;margin:6px 0;}
-    .btn{display:inline-block;margin-top:8px;padding:8px 12px;background:var(--brand);color:#fff;border-radius:6px;font-size:13px;text-decoration:none;}
+    .btn{display:inline-block;margin-top:8px;padding:8px 12px;background:#0077cc;color:#fff;border-radius:6px;font-size:13px;text-decoration:none;}
     .btn:hover{opacity:0.9;}
-
-    /* خدمات إضافية */
-    .extras{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:14px;}
-    .extras li{list-style:none;display:flex;align-items:center;gap:8px;font-size:13px;padding:4px;}
-    .extras li i{color:var(--brand);}
-
+    /* extras */
+    .extras{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:14px;font-size:13px;}
+    .extras li{list-style:none;display:flex;align-items:center;gap:8px;padding:4px;}
+    .extras li i{color:#0077cc;}
     footer{padding:12px;background:#111;color:#ddd;text-align:center;font-size:12px;margin-top:auto;}
-
-    /* موبايل: الباقات تحت بعض */
     @media(max-width:600px){
       .packages-grid{flex-direction:column;}
-      .package{flex:1 1 100%;max-width:100%;}
-      header h1{font-size:20px;}
-      header p{font-size:12px;}
+      .package{flex:1 1 100%;}
+      header h1{font-size:22px;}
+      header p{font-size:13px;}
     }
   </style>
 </head>
@@ -133,98 +91,73 @@
       <img src="https://raw.githubusercontent.com/Vasily7x/Orca-Media-Design/refs/heads/main/logo.png" alt="Orca Logo" class="logo">
       <h1>Orca Media &amp; Design</h1>
       <p>YOUR VISION, OUR OCEAN OF CREATIVITY</p>
-      <p>Don’t Go Far!</p>
+      <p>!Don’t Go Far</p>
     </header>
 
     <main>
+      <!-- نص المقدمة من أول صفحة -->
       <section>
-        <h2>خدماتنا</h2>
-        <div class="grid">
-          <div class="icon-box">
-            <i class="fas fa-pen-nib"></i>
-            <h3>تصميم جرافيك</h3>
-            <p>هوية بصرية ولوجو احترافي.</p>
-          </div>
-          <div class="icon-box">
-            <i class="fas fa-video"></i>
-            <h3>إنتاج فيديو</h3>
-            <p>تصوير منتجات ومونتاج فيديوهات.</p>
-          </div>
-          <div class="icon-box">
-            <i class="fas fa-bullhorn"></i>
-            <h3>إدارة سوشيال ميديا</h3>
-            <p>خطط محتوى وإعلانات ممولة.</p>
-          </div>
-        </div>
+        <h2>من نحن</h2>
+        <p style="text-align:justify;font-size:14px;line-height:1.7;">
+          Orca Media & Design هي وكالة إبداعية متخصصة في تقديم حلول متكاملة للتصميم والإعلام. 
+          نساعد العلامات التجارية على بناء حضور قوي وفعّال من خلال استراتيجيات بصرية مبتكرة 
+          وخدمات تصميم وإدارة محتوى احترافية، تجمع بين الإبداع والنتائج العملية.
+        </p>
       </section>
 
+      <!-- الباقات من آخر صفحة -->
       <section>
-        <h2>الباقات</h2>
-        <div class="pricing-toggle">
-          <span>شهري</span>
-          <label class="switch">
-            <input type="checkbox" id="togglePricing">
-            <span class="slider"></span>
-          </label>
-          <span>سنوي (خصم 10%)</span>
-        </div>
-
+        <h2>الباقات الشهرية</h2>
         <div class="packages-grid">
           <div class="package">
             <h3><i class="fas fa-star"></i> الباقة الأساسية</h3>
             <ul>
-              <li><i class="fas fa-check"></i> إدارة 3 منصات</li>
-              <li><i class="fas fa-check"></i> 6 بوست شهري</li>
+              <li><i class="fas fa-check"></i> إدارة 3 منصات سوشيال ميديا</li>
+              <li><i class="fas fa-check"></i> 6 بوست (تصاميم + فيديوهات قصيرة)</li>
               <li><i class="fas fa-check"></i> كتابة محتوى</li>
-              <li><i class="fas fa-check"></i> تقرير أداء</li>
+              <li><i class="fas fa-check"></i> تقرير أداء + تحليل منافسين</li>
+              <li><i class="fas fa-check"></i> متابعة للتفاعل والردود</li>
             </ul>
-            <p class="price" data-month="٥٠٠٠ جنيه / شهر" data-year="٥٤٬٠٠٠ جنيه / سنة">٥٠٠٠ جنيه / شهر</p>
+            <p class="price">٥٠٠٠ جنيه / شهر (غير شامل الإعلانات)</p>
+            <p class="price">خصم 10% بالدفع السنوي: ٥٤٬٠٠٠ جنيه</p>
             <a href="#" class="btn">اطلب الآن</a>
           </div>
-
           <div class="package">
             <h3><i class="fas fa-gem"></i> الباقة المكثفة</h3>
             <ul>
-              <li><i class="fas fa-check"></i> إدارة 3 منصات</li>
-              <li><i class="fas fa-check"></i> 12 بوست شهري</li>
+              <li><i class="fas fa-check"></i> إدارة 3 منصات سوشيال ميديا</li>
+              <li><i class="fas fa-check"></i> 12 بوست (تصاميم + فيديوهات قصيرة)</li>
               <li><i class="fas fa-check"></i> كتابة محتوى</li>
-              <li><i class="fas fa-check"></i> تقرير أداء</li>
+              <li><i class="fas fa-check"></i> تقرير أداء + تحليل منافسين</li>
+              <li><i class="fas fa-check"></i> متابعة للتفاعل والردود</li>
               <li><i class="fas fa-check"></i> SEO وزيادة التفاعل</li>
             </ul>
-            <p class="price" data-month="٩٠٠٠ جنيه / شهر" data-year="٩٧٬٢٠٠ جنيه / سنة">٩٠٠٠ جنيه / شهر</p>
+            <p class="price">٩٠٠٠ جنيه / شهر (غير شامل الإعلانات)</p>
+            <p class="price">خصم 10% بالدفع السنوي: ٩٧٬٢٠٠ جنيه</p>
             <a href="#" class="btn">اطلب الآن</a>
           </div>
         </div>
       </section>
 
+      <!-- خدمات إضافية -->
       <section>
         <h2>خدمات إضافية</h2>
         <ul class="extras">
-          <li><i class="fas fa-camera"></i> تصوير منتجات: ٢٠٠٠ – ٣٠٠٠ جنيه</li>
+          <li><i class="fas fa-camera"></i> تصوير منتجات (جلسة كاملة): ٢٠٠٠ – ٣٠٠٠ جنيه</li>
           <li><i class="fas fa-film"></i> مونتاج فيديوهات طويلة: ٢٠٠ – ٥٠٠ جنيه</li>
-          <li><i class="fas fa-clapperboard"></i> موشن فيديو (للدقيقة): من ٣٠٠٠ جنيه</li>
-          <li><i class="fas fa-paint-brush"></i> تصميم لوجو احترافي: من ٣٠٠٠ جنيه</li>
-          <li><i class="fas fa-palette"></i> هوية بصرية: ٢٠٠٠ جنيه</li>
-          <li><i class="fas fa-bullhorn"></i> إدارة إعلانات ممولة: ١٥٪ من الميزانية</li>
-          <li><i class="fas fa-globe"></i> موقع / Landing Page: ٥٠٠٠ – ١٠٠٠٠ جنيه</li>
-          <li><i class="fas fa-store"></i> متجر إلكتروني: من ١٥٠٠٠ جنيه</li>
-          <li><i class="fas fa-pen-nib"></i> كتابة محتوى: ٢٠٠ – ٢٠٠٠ جنيه</li>
-          <li><i class="fas fa-chalkboard-teacher"></i> استشارات أو تدريب: ١٥٠٠ – ٣٠٠٠ جنيه</li>
+          <li><i class="fas fa-clapperboard"></i> موشن فيديو (للدقيقة): يبدأ من ٣٠٠٠ جنيه</li>
+          <li><i class="fas fa-paint-brush"></i> تصميم لوجو احترافي: يبدأ من ٣٠٠٠ جنيه</li>
+          <li><i class="fas fa-palette"></i> هوية بصرية (ألوان + قوالب): ٢٠٠٠ جنيه</li>
+          <li><i class="fas fa-bullhorn"></i> إدارة إعلانات ممولة: ١٥٪ من ميزانية الإعلانات</li>
+          <li><i class="fas fa-globe"></i> إنشاء موقع / Landing Page: ٥٠٠٠ – ١٠٠٠٠ جنيه</li>
+          <li><i class="fas fa-store"></i> تصميم متجر إلكتروني متكامل: يبدأ من ١٥٠٠٠ جنيه</li>
+          <li><i class="fas fa-pen-nib"></i> كتابة محتوى إعلاني / مقالات: ٢٠٠ – ٢٠٠٠ جنيه</li>
+          <li><i class="fas fa-chalkboard-teacher"></i> استشارات استراتيجية أو تدريب فريق (جلسة واحدة): ١٥٠٠ – ٣٠٠٠ جنيه</li>
         </ul>
       </section>
     </main>
 
-    <footer>© 2025 Orca Media & Design</footer>
+    <footer>© 2025 Orca Media &amp; Design</footer>
   </div>
-
-  <script>
-    const toggle = document.getElementById('togglePricing');
-    const prices = document.querySelectorAll('.price');
-    toggle.addEventListener('change', ()=>{
-      prices.forEach(p=>{
-        p.textContent = toggle.checked ? p.dataset.year : p.dataset.month;
-      });
-    });
-  </script>
 </body>
 </html>
