@@ -6,77 +6,62 @@
   <title>Orca Media & Design</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    :root{--brand:#0077cc;}
+
     body{
       margin:0;
       background:#d9d9d9;
       font-family:"Segoe UI",Tahoma,Arial,sans-serif;
-      display:flex;
-      justify-content:center;
+      display:flex;justify-content:center;
       padding:10px;
       color:#222;
     }
     .a4-page{
-      width:100%;
-      max-width:794px;
-      background:#fff;
-      border-radius:10px;
+      width:100%;max-width:794px;
+      background:#fff;border-radius:10px;
       box-shadow:0 10px 25px rgba(0,0,0,0.2);
-      overflow:hidden;
-      display:flex;
-      flex-direction:column;
+      overflow:hidden;display:flex;flex-direction:column;
     }
     header{
-      position:relative;
-      padding:60px 20px 40px;
-      text-align:center;
+      position:relative;padding:60px 20px 40px;text-align:center;
       background:url("https://raw.githubusercontent.com/Vasily7x/Orca-Media-Design/refs/heads/main/background.png") no-repeat center/cover;
       color:#fff;
     }
-    header::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:rgba(0,0,0,0.35);
-    }
-    header .logo{
-      position:relative;
-      z-index:1;
-      max-width:160px;
-      margin-bottom:16px;
-    }
-    header h1, header p{position:relative;z-index:1;}
+    header::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.3);}
+    header .logo{position:relative;z-index:1;max-width:160px;margin-bottom:16px;}
+    header h1,header p{position:relative;z-index:1;}
     header h1{margin:0;font-size:30px;}
     header p{margin:6px 0;font-size:15px;}
+
     main{padding:20px;}
-    h2{color:#0077cc;text-align:center;margin:10px 0 16px;}
-    /* grid for packages */
-    .packages-grid{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-bottom:20px;
-    }
-    .package{
-      flex:1 1 calc(50% - 10px);
-      background:#fafafa;
-      border-radius:10px;
-      border:1px solid #ddd;
-      padding:14px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.05);
-      min-width:250px;
-    }
+    h2{color:var(--brand);text-align:center;margin:10px 0 16px;}
+
+    /* الباقات */
+    .pricing-toggle{text-align:center;margin-bottom:15px;}
+    .switch{position:relative;display:inline-block;width:50px;height:26px;margin:0 8px;}
+    .switch input{opacity:0;width:0;height:0;}
+    .slider{position:absolute;cursor:pointer;inset:0;background:#ccc;transition:.3s;border-radius:26px;}
+    .slider:before{content:"";position:absolute;height:18px;width:18px;left:4px;bottom:4px;background:#fff;transition:.3s;border-radius:50%;}
+    input:checked + .slider{background:var(--brand);}
+    input:checked + .slider:before{transform:translateX(24px);}
+
+    .packages-grid{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:20px;}
+    .package{flex:1 1 calc(50% - 10px);background:#fafafa;border-radius:10px;border:1px solid #ddd;padding:14px;box-shadow:0 4px 10px rgba(0,0,0,0.05);min-width:250px;}
     .package h3{margin:0 0 8px;font-size:16px;display:flex;align-items:center;gap:6px;}
     .package ul{list-style:none;padding:0;margin:0 0 10px;font-size:13px;}
     .package ul li{margin:6px 0;display:flex;align-items:center;gap:6px;}
-    .package ul li i{color:#0077cc;}
+    .package ul li i{color:var(--brand);}
     .price{font-weight:bold;font-size:15px;margin:6px 0;}
-    .btn{display:inline-block;margin-top:8px;padding:8px 12px;background:#0077cc;color:#fff;border-radius:6px;font-size:13px;text-decoration:none;}
+    .btn{display:inline-block;margin-top:8px;padding:8px 12px;background:var(--brand);color:#fff;border-radius:6px;font-size:13px;text-decoration:none;}
     .btn:hover{opacity:0.9;}
-    /* extras */
-    .extras{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:14px;font-size:13px;}
-    .extras li{list-style:none;display:flex;align-items:center;gap:8px;padding:4px;}
-    .extras li i{color:#0077cc;}
+
+    /* الخدمات الإضافية قائمة عمودية */
+    .extras{margin-top:14px;padding:0;}
+    .extras li{list-style:none;display:flex;align-items:center;gap:8px;font-size:14px;padding:6px 0;border-bottom:1px solid #eee;}
+    .extras li i{color:var(--brand);}
+
     footer{padding:12px;background:#111;color:#ddd;text-align:center;font-size:12px;margin-top:auto;}
+
     @media(max-width:600px){
       .packages-grid{flex-direction:column;}
       .package{flex:1 1 100%;}
@@ -95,7 +80,7 @@
     </header>
 
     <main>
-      <!-- نص المقدمة من أول صفحة -->
+      <!-- من نحن -->
       <section>
         <h2>من نحن</h2>
         <p style="text-align:justify;font-size:14px;line-height:1.7;">
@@ -105,9 +90,18 @@
         </p>
       </section>
 
-      <!-- الباقات من آخر صفحة -->
+      <!-- الباقات -->
       <section>
         <h2>الباقات الشهرية</h2>
+        <div class="pricing-toggle">
+          <span>شهري</span>
+          <label class="switch">
+            <input type="checkbox" id="togglePricing">
+            <span class="slider"></span>
+          </label>
+          <span>سنوي (خصم 10%)</span>
+        </div>
+
         <div class="packages-grid">
           <div class="package">
             <h3><i class="fas fa-star"></i> الباقة الأساسية</h3>
@@ -118,10 +112,10 @@
               <li><i class="fas fa-check"></i> تقرير أداء + تحليل منافسين</li>
               <li><i class="fas fa-check"></i> متابعة للتفاعل والردود</li>
             </ul>
-            <p class="price">٥٠٠٠ جنيه / شهر (غير شامل الإعلانات)</p>
-            <p class="price">خصم 10% بالدفع السنوي: ٥٤٬٠٠٠ جنيه</p>
+            <p class="price" data-month="٥٠٠٠ جنيه / شهر" data-year="٥٤٬٠٠٠ جنيه / سنة">٥٠٠٠ جنيه / شهر</p>
             <a href="#" class="btn">اطلب الآن</a>
           </div>
+
           <div class="package">
             <h3><i class="fas fa-gem"></i> الباقة المكثفة</h3>
             <ul>
@@ -132,8 +126,7 @@
               <li><i class="fas fa-check"></i> متابعة للتفاعل والردود</li>
               <li><i class="fas fa-check"></i> SEO وزيادة التفاعل</li>
             </ul>
-            <p class="price">٩٠٠٠ جنيه / شهر (غير شامل الإعلانات)</p>
-            <p class="price">خصم 10% بالدفع السنوي: ٩٧٬٢٠٠ جنيه</p>
+            <p class="price" data-month="٩٠٠٠ جنيه / شهر" data-year="٩٧٬٢٠٠ جنيه / سنة">٩٠٠٠ جنيه / شهر</p>
             <a href="#" class="btn">اطلب الآن</a>
           </div>
         </div>
@@ -152,12 +145,22 @@
           <li><i class="fas fa-globe"></i> إنشاء موقع / Landing Page: ٥٠٠٠ – ١٠٠٠٠ جنيه</li>
           <li><i class="fas fa-store"></i> تصميم متجر إلكتروني متكامل: يبدأ من ١٥٠٠٠ جنيه</li>
           <li><i class="fas fa-pen-nib"></i> كتابة محتوى إعلاني / مقالات: ٢٠٠ – ٢٠٠٠ جنيه</li>
-          <li><i class="fas fa-chalkboard-teacher"></i> استشارات استراتيجية أو تدريب فريق (جلسة واحدة): ١٥٠٠ – ٣٠٠٠ جنيه</li>
+          <li><i class="fas fa-chalkboard-teacher"></i> استشارات استراتيجية أو تدريب فريق: ١٥٠٠ – ٣٠٠٠ جنيه</li>
         </ul>
       </section>
     </main>
 
-    <footer>© 2025 Orca Media &amp; Design</footer>
+    <footer>© 2025 Orca Media & Design</footer>
   </div>
+
+  <script>
+    const toggle = document.getElementById('togglePricing');
+    const prices = document.querySelectorAll('.price');
+    toggle.addEventListener('change', ()=>{
+      prices.forEach(p=>{
+        p.textContent = toggle.checked ? p.dataset.year : p.dataset.month;
+      });
+    });
+  </script>
 </body>
 </html>
