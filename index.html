@@ -8,240 +8,191 @@
   <style>
     :root{
       --brand:#0077cc;
-      --paper-width:794px; /* A4-like width */
-      --paper-height:1123px;
     }
 
-    /* Page background (desk) */
     body{
       margin:0;
       background:#d9d9d9;
+      font-family:"Segoe UI",Tahoma,Arial,sans-serif;
       display:flex;
       justify-content:center;
-      padding:24px;
-      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      padding:10px;
       color:#222;
     }
 
-    /* A4 paper container */
     .a4-page{
-      width:var(--paper-width);
-      min-height:var(--paper-height);
+      width:100%;
+      max-width:794px;
       background:#fff;
       border-radius:10px;
-      box-shadow:0 18px 40px rgba(0,0,0,0.25);
+      box-shadow:0 10px 25px rgba(0,0,0,0.2);
       overflow:hidden;
       display:flex;
       flex-direction:column;
     }
 
-    /* Header: use custom background image (you set background.jpg or the provided URL) */
     header{
       position:relative;
-      padding:70px 30px 40px;
+      padding:60px 20px 40px;
       color:#fff;
       text-align:center;
-      background-size:cover;
-      background-position:center;
+      background:url("https://raw.githubusercontent.com/Vasily7x/Orca-Media-Design/refs/heads/main/Picture1.png") no-repeat center/cover;
     }
-    /* subtle overlay to keep text readable */
-    header .overlay{
-      position:absolute; inset:0; background:linear-gradient(rgba(0,0,0,0.18), rgba(0,0,0,0.18)); pointer-events:none;
+    header::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.25);
     }
     header .logo{
       position:relative;
-      z-index:2;
-      max-width:250px;
-      display:inline-block;
-      margin-bottom:14px;
+      z-index:1;
+      max-width:140px;
+      margin-bottom:12px;
     }
-    header h1{margin:0; font-size:28px; line-height:1.1; position:relative; z-index:2;}
-    header p{margin:6px 0; position:relative; z-index:2;}
+    header h1, header p{position:relative;z-index:1;}
+    header h1{margin:0;font-size:26px;}
+    header p{margin:4px 0;font-size:14px;}
 
-    /* Main content */
-    main{padding:24px 28px 30px; flex:1; overflow:auto;}
+    main{padding:20px;}
 
-    h2{color:var(--brand); text-align:center; margin:6px 0 18px;}
+    h2{color:var(--brand);text-align:center;margin:10px 0 16px;}
 
-    /* Services grid */
-    .grid{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-bottom:18px;}
-    .icon-box{
-      width:220px;
-      background:#fff;
-      border-radius:10px;
-      padding:18px;
-      text-align:center;
-      box-shadow:0 6px 18px rgba(0,0,0,0.06);
-      border:1px solid rgba(0,0,0,0.03);
-    }
-    .icon-box i{font-size:30px; color:var(--brand); margin-bottom:8px; display:block;}
-    .icon-box h3{margin:8px 0 6px; font-size:18px;}
-    .icon-box p{font-size:13px; color:#444; margin:0;}
-
-    /* Pricing area: toggle + packages side-by-side */
-    .pricing{
-      margin-top:8px;
+    /* الخدمات */
+    .grid{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:12px;
       margin-bottom:18px;
     }
-    .pricing-toggle{display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:12px; font-size:14px;}
-    .switch{position:relative;display:inline-block;width:48px;height:26px;}
+    .icon-box{
+      flex:1 1 200px;
+      max-width:240px;
+      background:#fff;
+      border-radius:10px;
+      padding:15px;
+      text-align:center;
+      box-shadow:0 4px 12px rgba(0,0,0,0.06);
+      border:1px solid #eee;
+    }
+    .icon-box i{font-size:28px;color:var(--brand);margin-bottom:8px;display:block;}
+    .icon-box h3{margin:6px 0;font-size:16px;}
+    .icon-box p{font-size:13px;color:#444;}
+
+    /* الباقات */
+    .pricing-toggle{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:14px;font-size:14px;}
+    .switch{position:relative;display:inline-block;width:50px;height:24px;}
     .switch input{opacity:0;width:0;height:0;}
-    .slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ccc;transition:.3s;border-radius:26px;}
-    .slider:before{position:absolute;content:"";height:18px;width:18px;left:4px;bottom:4px;background:white;transition:.3s;border-radius:50%;}
+    .slider{position:absolute;cursor:pointer;inset:0;background:#ccc;transition:.3s;border-radius:24px;}
+    .slider:before{content:"";position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#fff;transition:.3s;border-radius:50%;}
     input:checked + .slider{background:var(--brand);}
-    input:checked + .slider:before{transform:translateX(22px);}
+    input:checked + .slider:before{transform:translateX(26px);}
 
     .packages-grid{
       display:flex;
-      gap:18px;
-      align-items:flex-start;
-      justify-content:space-between;
       flex-wrap:wrap;
+      gap:14px;
     }
     .package{
-      flex:1 1 calc(50% - 9px); /* two columns */
-      min-width:260px;
-      border-radius:10px;
-      border:1px solid #e6e6e6;
-      padding:16px;
+      flex:1 1 calc(50% - 10px);
       background:#fafafa;
-      box-shadow:0 6px 18px rgba(0,0,0,0.04);
+      border-radius:10px;
+      border:1px solid #ddd;
+      padding:14px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.05);
+      min-width:250px;
     }
-    .package h3{margin:0 0 8px; font-size:18px; display:flex; align-items:center; gap:8px;}
-    .package ul{list-style:none; padding:0; margin:0 0 10px; font-size:14px;}
-    .package ul li{display:flex; align-items:center; gap:8px; margin:8px 0; color:#333;}
+    .package h3{margin:0 0 8px;font-size:16px;display:flex;align-items:center;gap:6px;}
+    .package ul{list-style:none;padding:0;margin:0 0 10px;font-size:13px;}
+    .package ul li{margin:6px 0;display:flex;align-items:center;gap:6px;}
     .package ul li i{color:var(--brand);}
-    .price{font-weight:700; font-size:16px; margin-top:8px;}
-    .annual-badge{
-      display:inline-block;
-      margin-top:10px;
-      background:linear-gradient(90deg, rgba(0,119,204,0.08), rgba(0,119,204,0.03));
-      border:1px dashed rgba(0,119,204,0.35);
-      padding:10px 12px;
-      border-radius:8px;
-      color:#004466;
-      font-weight:600;
-      font-size:14px;
-    }
-    .btn{display:inline-block;margin-top:12px;padding:9px 14px;background:var(--brand);color:#fff;border-radius:8px;text-decoration:none;font-size:14px;}
-    .btn:hover{opacity:0.95;}
+    .price{font-weight:bold;font-size:15px;margin:6px 0;}
+    .btn{display:inline-block;margin-top:8px;padding:8px 12px;background:var(--brand);color:#fff;border-radius:6px;font-size:13px;text-decoration:none;}
+    .btn:hover{opacity:0.9;}
 
-    /* Additional services - two column list */
-    .extras{
-      display:grid;
-      grid-template-columns:repeat(1, 1fr);
-      gap:10px 18px;
-      margin-top:14px;
-      font-size:14px;
-    }
-    .extras li{list-style:none; display:flex; align-items:center; gap:10px; padding:6px 4px;}
-    .extras li i{color:var(--brand); min-width:24px; text-align:center;}
+    /* خدمات إضافية */
+    .extras{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:14px;}
+    .extras li{list-style:none;display:flex;align-items:center;gap:8px;font-size:13px;padding:4px;}
+    .extras li i{color:var(--brand);}
 
-    footer{padding:12px 18px; background:#111; color:#ddd; text-align:center; font-size:13px;}
-    /* Responsive: make packages stack on narrow screens */
-    @media (max-width:860px){
-      .a4-page{width:95%; min-height:1000px;}
+    footer{padding:12px;background:#111;color:#ddd;text-align:center;font-size:12px;margin-top:auto;}
+
+    /* موبايل: الباقات تحت بعض */
+    @media(max-width:600px){
       .packages-grid{flex-direction:column;}
-      .package{flex-basis:100%;}
-      .extras{grid-template-columns:1fr;}
+      .package{flex:1 1 100%;max-width:100%;}
+      header h1{font-size:20px;}
+      header p{font-size:12px;}
     }
-
   </style>
 </head>
 <body>
   <div class="a4-page">
-    <header style="background-image:url('https://raw.githubusercontent.com/Vasily7x/Orca-Media-Design/refs/heads/main/background.png');">
-      <div class="overlay" aria-hidden="true"></div>
+    <header>
       <img src="https://raw.githubusercontent.com/Vasily7x/Orca-Media-Design/refs/heads/main/logo.png" alt="Orca Logo" class="logo">
       <h1>Orca Media &amp; Design</h1>
       <p>YOUR VISION, OUR OCEAN OF CREATIVITY</p>
-      <p>!Don’t Go Far</p>
+      <p>Don’t Go Far!</p>
     </header>
 
     <main>
       <section>
         <h2>خدماتنا</h2>
         <div class="grid">
-
-           <div class="icon-box">
-            <i class="fas fa-bullhorn" aria-hidden="true"></i>
-            <h3>إدارة سوشيال ميديا</h3>
-            <p>خطط محتوى، إدارة صفحات، وإعلانات ممولة لبناء مجتمع نشط.</p>
-          </div>
           <div class="icon-box">
-            <i class="fas fa-pen-nib" aria-hidden="true"></i>
+            <i class="fas fa-pen-nib"></i>
             <h3>تصميم جرافيك</h3>
-            <p>هوية بصرية ولوجو احترافي يميّزك عن المنافسين.</p>
+            <p>هوية بصرية ولوجو احترافي.</p>
           </div>
-
           <div class="icon-box">
-            <i class="fas fa-video" aria-hidden="true"></i>
+            <i class="fas fa-video"></i>
             <h3>إنتاج فيديو</h3>
-            <p>تصوير منتجات، تصوير جلسات إعلانات، ومونتاج فيديوهات قصيرة وطويلة.</p>
+            <p>تصوير منتجات ومونتاج فيديوهات.</p>
           </div>
-
-
+          <div class="icon-box">
+            <i class="fas fa-bullhorn"></i>
+            <h3>إدارة سوشيال ميديا</h3>
+            <p>خطط محتوى وإعلانات ممولة.</p>
+          </div>
         </div>
       </section>
 
-      <section class="pricing">
+      <section>
         <h2>الباقات</h2>
-
-        <div class="pricing-toggle" aria-hidden="false">
-          <span>سنوي (خصم 10%)</span>
-          <label class="switch" title="تبديل شهري / سنوي">
-            <input type="checkbox" id="togglePricing" aria-label="Toggle pricing">
+        <div class="pricing-toggle">
+          <span>شهري</span>
+          <label class="switch">
+            <input type="checkbox" id="togglePricing">
             <span class="slider"></span>
           </label>
-           <span>شهري</span>
+          <span>سنوي (خصم 10%)</span>
         </div>
 
         <div class="packages-grid">
-          <div class="package" id="basicPackage">
-            <h3><i class="fas fa-star" aria-hidden="true"></i> الباقة الأساسية</h3>
+          <div class="package">
+            <h3><i class="fas fa-star"></i> الباقة الأساسية</h3>
             <ul>
-              <li><i class="fas fa-check" aria-hidden="true"></i> إدارة 3 منصات سوشيال ميديا</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> 6 بوست (تصاميم + فيديوهات قصيرة)</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> كتابة محتوى</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> تقرير أداء + تحليل منافسين</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> متابعة للتفاعل والردود</li>
+              <li><i class="fas fa-check"></i> إدارة 3 منصات</li>
+              <li><i class="fas fa-check"></i> 6 بوست شهري</li>
+              <li><i class="fas fa-check"></i> كتابة محتوى</li>
+              <li><i class="fas fa-check"></i> تقرير أداء</li>
             </ul>
-
-            <p class="price" data-monthly-number="5000">٥٠٠٠ جنيه / شهر</p>
-
-            <div class="annual-badge" aria-hidden="true">
-              <i class="fas fa-gift" style="margin-left:8px;"></i>
-              وفر 10% بالدفع السنوي:
-              <span class="annual-price">٥٤٬٠٠٠ جنيه / سنة</span>
-            </div>
-
-            <div>
-              <a class="btn" href="https://wa.me/201221832503">اطلب الآن</a>
-            </div>
+            <p class="price" data-month="٥٠٠٠ جنيه / شهر" data-year="٥٤٬٠٠٠ جنيه / سنة">٥٠٠٠ جنيه / شهر</p>
+            <a href="#" class="btn">اطلب الآن</a>
           </div>
 
-          <div class="package" id="intensePackage">
-            <h3><i class="fas fa-gem" aria-hidden="true"></i> الباقة المكثفة</h3>
+          <div class="package">
+            <h3><i class="fas fa-gem"></i> الباقة المكثفة</h3>
             <ul>
-              <li><i class="fas fa-check" aria-hidden="true"></i> إدارة 3 منصات سوشيال ميديا</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> 12 بوست (تصاميم + فيديوهات قصيرة)</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> كتابة محتوى</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> تقرير أداء + تحليل منافسين</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> متابعة للتفاعل والردود</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> SEO وزيادة التفاعل</li>
+              <li><i class="fas fa-check"></i> إدارة 3 منصات</li>
+              <li><i class="fas fa-check"></i> 12 بوست شهري</li>
+              <li><i class="fas fa-check"></i> كتابة محتوى</li>
+              <li><i class="fas fa-check"></i> تقرير أداء</li>
+              <li><i class="fas fa-check"></i> SEO وزيادة التفاعل</li>
             </ul>
-
-            <p class="price" data-monthly-number="9000">٩٠٠٠ جنيه / شهر</p>
-
-            <div class="annual-badge" aria-hidden="true">
-              <i class="fas fa-gift" style="margin-left:8px;"></i>
-              وفر 10% بالدفع السنوي:
-              <span class="annual-price">٩٧٬٢٠٠ جنيه / سنة</span>
-            </div>
-
-            <div>
-              <a class="btn" href="https://wa.me/201221832503">اطلب الآن</a>
-            </div>
+            <p class="price" data-month="٩٠٠٠ جنيه / شهر" data-year="٩٧٬٢٠٠ جنيه / سنة">٩٠٠٠ جنيه / شهر</p>
+            <a href="#" class="btn">اطلب الآن</a>
           </div>
         </div>
       </section>
@@ -249,89 +200,31 @@
       <section>
         <h2>خدمات إضافية</h2>
         <ul class="extras">
-          <li><i class="fas fa-camera" aria-hidden="true"></i> تصوير منتجات (جلسة كاملة): ٢٠٠٠ – ٣٠٠٠ جنيه</li>
-          <li><i class="fas fa-film" aria-hidden="true"></i> مونتاج فيديوهات طويلة: ٢٠٠ – ٥٠٠ جنيه</li>
-          <li><i class="fas fa-clapperboard" aria-hidden="true"></i> موشن فيديو (للدقيقة): يبدأ من ٣٠٠٠ جنيه</li>
-          <li><i class="fas fa-paint-brush" aria-hidden="true"></i> تصميم لوجو احترافي: يبدأ من ٣٠٠٠ جنيه</li>
-          <li><i class="fas fa-palette" aria-hidden="true"></i> هوية بصرية (ألوان + قوالب): ٢٠٠٠ جنيه</li>
-          <li><i class="fas fa-bullhorn" aria-hidden="true"></i> إدارة إعلانات ممولة: ١٥٪ من ميزانية الإعلانات</li>
-          <li><i class="fas fa-globe" aria-hidden="true"></i> إنشاء موقع / Landing Page: ٥٠٠٠ – ١٠٠٠٠ جنيه</li>
-          <li><i class="fas fa-store" aria-hidden="true"></i> تصميم متجر إلكتروني متكامل: يبدأ من ١٥٠٠٠ جنيه</li>
-          <li><i class="fas fa-pen-nib" aria-hidden="true"></i> كتابة محتوى إعلاني / مقالات: ٢٠٠ – ٢٠٠٠ جنيه</li>
-          <li><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i> استشارات استراتيجية أو تدريب فريق: ١٥٠٠ – ٣٠٠٠ جنيه</li>
+          <li><i class="fas fa-camera"></i> تصوير منتجات: ٢٠٠٠ – ٣٠٠٠ جنيه</li>
+          <li><i class="fas fa-film"></i> مونتاج فيديوهات طويلة: ٢٠٠ – ٥٠٠ جنيه</li>
+          <li><i class="fas fa-clapperboard"></i> موشن فيديو (للدقيقة): من ٣٠٠٠ جنيه</li>
+          <li><i class="fas fa-paint-brush"></i> تصميم لوجو احترافي: من ٣٠٠٠ جنيه</li>
+          <li><i class="fas fa-palette"></i> هوية بصرية: ٢٠٠٠ جنيه</li>
+          <li><i class="fas fa-bullhorn"></i> إدارة إعلانات ممولة: ١٥٪ من الميزانية</li>
+          <li><i class="fas fa-globe"></i> موقع / Landing Page: ٥٠٠٠ – ١٠٠٠٠ جنيه</li>
+          <li><i class="fas fa-store"></i> متجر إلكتروني: من ١٥٠٠٠ جنيه</li>
+          <li><i class="fas fa-pen-nib"></i> كتابة محتوى: ٢٠٠ – ٢٠٠٠ جنيه</li>
+          <li><i class="fas fa-chalkboard-teacher"></i> استشارات أو تدريب: ١٥٠٠ – ٣٠٠٠ جنيه</li>
         </ul>
       </section>
     </main>
 
-    <footer>© 2025 Orca Media &amp; Design</footer>
+    <footer>© 2025 Orca Media & Design</footer>
   </div>
 
   <script>
-    // helpers: format number with arabic thousands separator (U+066C) and convert to Eastern Arabic digits
-    function formatWithArabicThousands(n){
-      const sep = '٬'; // U+066C
-      const s = Math.round(n).toString();
-      let out = '', cnt = 0;
-      for(let i = s.length - 1; i >= 0; i--){
-        out = s[i] + out;
-        cnt++;
-        if(cnt % 3 === 0 && i !== 0) out = sep + out;
-      }
-      return toEasternDigits(out);
-    }
-    function toEasternDigits(str){
-      const map = {'0':'٠','1':'١','2':'٢','3':'٣','4':'٤','5':'٥','6':'٦','7':'٧','8':'٨','9':'٩'};
-      return str.replace(/\d/g, d => map[d]);
-    }
-
-    // calculate and update prices
-    function updatePrices(isAnnual){
-      document.querySelectorAll('.package').forEach(pkg => {
-        const priceEl = pkg.querySelector('.price');
-        const monthlyNum = Number(priceEl.dataset.monthlyNumber);
-        if(isAnnual){
-          const yearly = monthlyNum * 12 * 0.9; // 10% off
-          priceEl.textContent = formatWithArabicThousands(monthlyNum) + ' جنيه / شهر';
-          // show annual badge computed value
-          const annualSpan = pkg.querySelector('.annual-price');
-          if(annualSpan) annualSpan.textContent = formatWithArabicThousands(yearly) + ' جنيه / سنة';
-        } else {
-          // monthly view: keep monthly text and also prime the annual price display
-          const yearly = monthlyNum * 12 * 0.9;
-          priceEl.textContent = formatWithArabicThousands(monthlyNum) + ' جنيه / شهر';
-          const annualSpan = pkg.querySelector('.annual-price');
-          if(annualSpan) annualSpan.textContent = formatWithArabicThousands(yearly) + ' جنيه / سنة';
-        }
-      });
-    }
-
-    // toggle behaviour: switch the visible main price between monthly and yearly
     const toggle = document.getElementById('togglePricing');
-    const priceEls = document.querySelectorAll('.package .price');
-
-    function showMode(isAnnual){
-      priceEls.forEach(p=>{
-        const monthly = Number(p.dataset.monthlyNumber);
-        if(isAnnual){
-          const yearly = monthly * 12 * 0.9;
-          p.textContent = formatWithArabicThousands(yearly) + ' جنيه / سنة';
-        } else {
-          p.textContent = formatWithArabicThousands(monthly) + ' جنيه / شهر';
-        }
+    const prices = document.querySelectorAll('.price');
+    toggle.addEventListener('change', ()=>{
+      prices.forEach(p=>{
+        p.textContent = toggle.checked ? p.dataset.year : p.dataset.month;
       });
-    }
-
-    // initialize computed values and UI
-    updatePrices(false);
-    showMode(false);
-
-    toggle.addEventListener('change', (e)=>{
-      showMode(e.target.checked);
     });
   </script>
 </body>
 </html>
-
-
-
-
