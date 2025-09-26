@@ -29,16 +29,19 @@
     }
 
     /* هيدر: الخلفية يمكنك استبدالها بالصورة background.jpg */
-    header{
-      position:relative;
-      padding:80px 20px 60px;
-      color:#fff;
-      text-align:center;
-      background:linear-gradient(to bottom,#00aaff,#004466); /* احتياطي */
-      background-size:cover;
-      background-position:center;
-      overflow:hidden;
-    }
+header {
+  position: relative;
+  padding: 80px 20px 60px;
+  color: #fff;
+  text-align: center;
+  background: url('https://raw.githubusercontent.com/Vasily7x/Orca-Media-Design/refs/heads/main/Picture1.png') no-repeat center center,
+              linear-gradient(to bottom, #00aaff, #004466);
+
+  background-size: cover; 
+  background-position: center;
+  overflow: hidden;
+}
+
     /* خطوط بيضاء مائلة مثل PDF */
     header::before{
       content:"";
@@ -260,3 +263,4 @@
   </script>
 </body>
 </html>
+
