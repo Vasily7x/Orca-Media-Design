@@ -22,20 +22,27 @@
       box-shadow:0 10px 25px rgba(0,0,0,0.2);
       overflow:hidden;display:flex;flex-direction:column;
     }
-    header{
+header {
   position: relative;
   text-align: center;
   background: url("https://raw.githubusercontent.com/Vasily7x/Orca-Media-Design/refs/heads/main/bg.png")
               no-repeat center center;
-    background-size: contain;  
-  background-color: #000;    
+  background-size: cover;     
+  background-position: center;
   color: #fff;
   min-height: 100vh;         
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-    }
+}
+
+@media (max-width: 600px) {
+  header {
+    background-position: top center;  
+  }
+}
+
     header::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.3);}
     header .logo {
   position: relative;
@@ -177,6 +184,7 @@
   </script>
 </body>
 </html>
+
 
 
 
