@@ -29,41 +29,50 @@
       flex-direction: column;
     }
 
-    header {
-      position: relative;
-      text-align: center;
-      background: url("https://raw.githubusercontent.com/Vasily7x/Orca-Media-Design/refs/heads/main/bg1.png") no-repeat center center / cover;
-      color: #fff;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-    }
+header {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+}
 
-    header::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.3);
-      z-index: 0;
-    }
+header img.bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
 
-    header h1,
-    header p {
-      position: relative;
-      z-index: 1;
-    }
+header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* طبقة شفافة */
+  z-index: 1;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 30px;
-    }
+header h1,
+header p {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
 
-    header p {
-      font-size: 15px;
-      opacity: 0.8;
-    }
+header h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
 
     main {
       padding: 20px;
@@ -243,9 +252,9 @@
 </head>
 <body>
   <div class="a4-page">
-    <header>
-    </header>
-
+ <header>
+  <img class="bg" src="https://raw.githubusercontent.com/Vasily7x/Orca-Media-Design/refs/heads/main/bg1.png" alt="Orca background">
+</header>
     <main>
       <section>
         <h2>من نحن</h2>
@@ -328,6 +337,7 @@
   </script>
 </body>
 </html>
+
 
 
 
