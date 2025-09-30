@@ -6,67 +6,108 @@
   <title>Orca Media & Design</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    :root { --brand: #0077cc; --dark:#0d1b2a; --light:#f9f9f9; }
+    :root {
+      --brand: #0077cc;
+      --brand-gradient: linear-gradient(135deg, #0077cc, #00c6ff);
+    }
 
     body {
       margin: 0;
-      font-family: system-ui, sans-serif;
+      font-family: "Cairo", system-ui, sans-serif;
       display: flex;
       justify-content: center;
-      padding: 10px;
+      padding: 20px;
+      background: #f5f8fa;
       color: #222;
-      background: var(--light);
     }
 
     .a4-page {
       width: 100%;
-      max-width: 650px;
+      max-width: 680px;
       background: #fff;
       border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
       overflow: hidden;
+      animation: fadeIn 1s ease-out;
       display: flex;
       flex-direction: column;
     }
 
+    /* -------- Header -------- */
     header {
       position: relative;
-    }
-    header img.bg {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-      filter: brightness(0.95);
-    }
-    .header-content {
-      position: absolute;
-      inset: 0;
+      height: 240px;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       color: #fff;
       text-align: center;
-      background: rgba(0,0,0,0.35);
+      overflow: hidden;
     }
-    header h1 { font-size: 28px; margin: 0; font-weight: 700; }
-    header p { font-size: 15px; margin: 8px 0 0; }
 
+    header img.bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      padding: 20px 30px;
+      border-radius: 12px;
+    }
+
+    header h1 {
+      font-size: 32px;
+      margin: 0;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    header p {
+      font-size: 15px;
+      margin-top: 6px;
+      opacity: 0.95;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    /* -------- Main -------- */
     main { padding: 24px; }
 
     h2 {
       color: var(--brand);
       text-align: center;
-      margin: 14px 0 18px;
+      margin: 20px 0;
+      position: relative;
+      font-size: 22px;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      border-radius: 3px;
+      background: var(--brand-gradient);
     }
 
+    /* -------- Pricing -------- */
     .pricing-toggle {
       text-align: center;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
-    .switch { position: relative; display: inline-block; width: 50px; height: 26px; margin: 0 8px; }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 54px;
+      height: 28px;
+      margin: 0 8px;
+    }
     .switch input { opacity: 0; width: 0; height: 0; }
     .slider {
       position: absolute;
@@ -74,13 +115,13 @@
       inset: 0;
       background: #ccc;
       transition: .3s;
-      border-radius: 26px;
+      border-radius: 28px;
     }
     .slider:before {
       content: "";
       position: absolute;
-      height: 18px;
-      width: 18px;
+      height: 20px;
+      width: 20px;
       left: 4px;
       bottom: 4px;
       background: #fff;
@@ -88,80 +129,110 @@
       border-radius: 50%;
     }
     input:checked + .slider { background: var(--brand); }
-    input:checked + .slider:before { transform: translateX(24px); }
+    input:checked + .slider:before { transform: translateX(26px); }
 
     .packages-grid {
       display: flex;
       gap: 16px;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .package {
-      flex: 1 1 50%;
-      background: #fff;
+      flex: 1 1 calc(50% - 10px);
+      background: #fafafa;
       border-radius: 14px;
-      border: 1px solid #e4e4e4;
-      padding: 14px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-      transition: transform .3s;
+      padding: 18px;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+      transition: transform 0.35s, box-shadow 0.35s;
+      border: 1px solid #eee;
+      min-width: 280px;
+      max-width: 300px;
     }
-    .package:hover { transform: translateY(-6px); }
+    .package:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+    }
 
     .package h3 {
-      margin: 0 0 10px;
-      font-size: 17px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--dark);
-    }
-
-    .package ul { list-style: none; padding: 0; margin: 0 0 10px; font-size: 13px; }
-    .package ul li { margin: 6px 0; display: flex; align-items: center; gap: 6px; }
-    .package ul li i { color: var(--brand); }
-
-    .price { font-weight: bold; font-size: 15px; margin: 6px 0; color: var(--dark); }
-    .btn {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 8px 12px;
-      background: var(--brand);
-      color: #fff;
-      border-radius: 6px;
-      font-size: 13px;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-    .btn:hover { background:#005fa3; }
-
-    .extras-section h2 { margin-top: 20px; }
-    .extras { margin-top: 12px; padding: 0; }
-    .extras li {
-      list-style: none;
+      margin: 0 0 12px;
+      font-size: 18px;
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 14px;
-      padding: 6px 0;
-      border-bottom: 1px solid #eee;
+      color: #333;
     }
+
+    .package ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .package ul li {
+      margin: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .package ul li i { color: var(--brand); }
+
+    .price {
+      font-weight: bold;
+      font-size: 15px;
+      margin: 8px 0;
+      color: #444;
+    }
+
+    /* -------- Extras -------- */
+    .extras {
+      margin-top: 18px;
+      padding: 0;
+    }
+    .extras li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      align-items: start;
+      gap: 10px;
+      font-size: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      transition: color 0.3s;
+    }
+    .extras li:hover { color: var(--brand); }
     .extras li i { color: var(--brand); }
 
+    /* -------- Footer -------- */
     footer {
-      padding: 14px;
-      background: var(--dark);
-      color: #ddd;
+      padding: 20px;
+      background: #111;
+      color: #aaa;
       text-align: center;
-      font-size: 12px;
+      font-size: 13px;
       margin-top: auto;
     }
 
-    @media(max-width: 768px) {
-      .packages-grid { flex-direction: column; }
-      .package { flex: 1 1 100%; }
-      header img.bg { height: 200px; }
-      header h1 { font-size: 22px; }
-      header p { font-size: 13px; }
+    .btn-contact {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: var(--brand-gradient);
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .btn-contact:hover {
+      background: linear-gradient(135deg, #0062aa, #00aaff);
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -169,10 +240,6 @@
   <div class="a4-page">
     <header>
       <img class="bg" src="https://raw.githubusercontent.com/Vasily7x/Orca-Media-Design/refs/heads/main/bg1.png" alt="Orca background">
-      <div class="header-content">
-        <h1>Orca Media & Design</h1>
-        <p>وكالة تصميم ودعاية متكاملة</p>
-      </div>
     </header>
 
     <main>
@@ -186,7 +253,7 @@
       </section>
 
       <section class="pricing">
-        <h2>الباقات</h2>
+        <h2>باقات</h2>
         <div class="pricing-toggle">
           <span>سنوي (خصم 10%)</span>
           <label class="switch">
@@ -207,7 +274,6 @@
               <li><i class="fas fa-check"></i> متابعة للتفاعل والردود</li>
             </ul>
             <p class="price" data-month="٦,٠٠٠ جنيه / شهر" data-year="٦٤,٨٠٠ جنيه / سنة">٦,٠٠٠ جنيه / شهر</p>
-            <a href="https://wa.me/201221832503" class="btn">تواصل معنا</a>
           </div>
 
           <div class="package">
@@ -221,7 +287,6 @@
               <li><i class="fas fa-check"></i> SEO و زيادة التفاعل</li>
             </ul>
             <p class="price" data-month="١٠,٠٠٠ جنيه / شهر" data-year="١٠٨,٠٠٠ جنيه / سنة">١٠,٠٠٠ جنيه / شهر</p>
-            <a href="https://wa.me/201221832503" class="btn">تواصل معنا</a>
           </div>
         </div>
       </section>
@@ -241,12 +306,17 @@
           <li><i class="fas fa-chalkboard-teacher"></i> استشارات و تدريب: جلسة تبدأ من ١,٥٠٠ – ٣,٠٠٠ جنيه</li>
         </ul>
       </section>
+
+      <div style="text-align:center;">
+        <a href="https://wa.me/201221832503" class="btn-contact">تواصل معنا</a>
+      </div>
     </main>
 
     <footer>© 2025 Orca Media & Design</footer>
   </div>
 
   <script>
+    // Toggle Pricing
     const toggle = document.getElementById('togglePricing');
     const prices = document.querySelectorAll('.price');
     toggle.addEventListener('change', () => {
