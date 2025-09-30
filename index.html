@@ -24,9 +24,8 @@
     .a4-page {
       width: 100%;
       max-width: 680px;
-      background: rgba(255, 255, 255, 0.9);
+      background: #fff;
       border-radius: 20px;
-      backdrop-filter: blur(12px);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
       overflow: hidden;
       animation: fadeIn 1s ease-out;
@@ -34,15 +33,16 @@
       flex-direction: column;
     }
 
+    /* -------- Header -------- */
     header {
       position: relative;
       height: 240px;
-      background: var(--brand-gradient);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
       text-align: center;
+      overflow: hidden;
     }
 
     header img.bg {
@@ -51,29 +51,29 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.25;
     }
 
     .header-content {
       position: relative;
       z-index: 2;
+      background: rgba(0,0,0,0.45);
+      padding: 20px 30px;
+      border-radius: 12px;
     }
 
     header h1 {
       font-size: 32px;
       margin: 0;
-      letter-spacing: 1px;
     }
 
     header p {
       font-size: 15px;
       margin-top: 6px;
-      opacity: 0.9;
+      opacity: 0.95;
     }
 
-    main {
-      padding: 24px;
-    }
+    /* -------- Main -------- */
+    main { padding: 24px; }
 
     h2 {
       color: var(--brand);
@@ -82,7 +82,6 @@
       position: relative;
       font-size: 22px;
     }
-
     h2::after {
       content: "";
       position: absolute;
@@ -95,6 +94,7 @@
       background: var(--brand-gradient);
     }
 
+    /* -------- Pricing -------- */
     .pricing-toggle {
       text-align: center;
       margin-bottom: 20px;
@@ -139,7 +139,7 @@
 
     .package {
       flex: 1 1 calc(50% - 10px);
-      background: rgba(255, 255, 255, 0.8);
+      background: #fafafa;
       border-radius: 14px;
       padding: 18px;
       box-shadow: 0 10px 22px rgba(0,0,0,0.08);
@@ -147,7 +147,6 @@
       border: 1px solid #eee;
       min-width: 250px;
     }
-
     .package:hover {
       transform: translateY(-6px) scale(1.02);
       box-shadow: 0 16px 32px rgba(0,0,0,0.15);
@@ -184,10 +183,38 @@
       color: #444;
     }
 
-    .btn {
+    /* -------- Extras -------- */
+    .extras {
+      margin-top: 18px;
+      padding: 0;
+    }
+    .extras li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      align-items: start;
+      gap: 10px;
+      font-size: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      transition: color 0.3s;
+    }
+    .extras li:hover { color: var(--brand); }
+    .extras li i { color: var(--brand); }
+
+    /* -------- Footer -------- */
+    footer {
+      padding: 20px;
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      font-size: 13px;
+      margin-top: auto;
+    }
+
+    .btn-contact {
       display: inline-block;
-      margin-top: 8px;
-      padding: 10px 14px;
+      margin-top: 20px;
+      padding: 12px 20px;
       background: var(--brand-gradient);
       border-radius: 8px;
       color: #fff;
@@ -195,38 +222,9 @@
       text-decoration: none;
       transition: all 0.3s ease;
     }
-    .btn:hover {
+    .btn-contact:hover {
       background: linear-gradient(135deg, #0062aa, #00aaff);
       transform: scale(1.05);
-    }
-
-    .extras {
-      margin-top: 18px;
-      padding: 0;
-    }
-    .extras li {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
-      transition: transform 0.3s, color 0.3s;
-    }
-    .extras li:hover {
-      transform: translateX(-6px);
-      color: var(--brand);
-    }
-    .extras li i { color: var(--brand); }
-
-    footer {
-      padding: 16px;
-      background: #111;
-      color: #aaa;
-      text-align: center;
-      font-size: 13px;
-      margin-top: auto;
     }
 
     @media(max-width: 768px) {
@@ -284,7 +282,6 @@
               <li><i class="fas fa-check"></i> متابعة للتفاعل والردود</li>
             </ul>
             <p class="price" data-month="٦,٠٠٠ جنيه / شهر" data-year="٦٤,٨٠٠ جنيه / سنة">٦,٠٠٠ جنيه / شهر</p>
-            <a href="https://wa.me/201221832503" class="btn">تواصل معنا</a>
           </div>
 
           <div class="package">
@@ -298,7 +295,6 @@
               <li><i class="fas fa-check"></i> SEO و زيادة التفاعل</li>
             </ul>
             <p class="price" data-month="١٠,٠٠٠ جنيه / شهر" data-year="١٠٨,٠٠٠ جنيه / سنة">١٠,٠٠٠ جنيه / شهر</p>
-            <a href="https://wa.me/201221832503" class="btn">تواصل معنا</a>
           </div>
         </div>
       </section>
@@ -318,6 +314,10 @@
           <li><i class="fas fa-chalkboard-teacher"></i> استشارات و تدريب: جلسة تبدأ من ١,٥٠٠ – ٣,٠٠٠ جنيه</li>
         </ul>
       </section>
+
+      <div style="text-align:center;">
+        <a href="https://wa.me/201221832503" class="btn-contact">تواصل معنا</a>
+      </div>
     </main>
 
     <footer>© 2025 Orca Media & Design</footer>
